@@ -3,8 +3,12 @@ const ResMsg = require('./index');
 const { body, validationResult } = require('express-validator')
 
 const recordsValidation = () => [
-  body('startDate').not().isEmpty().withMessage('startDate is required'),
-  body('endDate').not().isEmpty().withMessage('endDate is required'),
+    body('startDate')
+    .isDate({ format: 'YYYY-MM-DD' })
+    .withMessage('must be a valid date and be formatted with YYYY-MM-DD format'),
+    body('endDate')
+    .isDate({ format: 'YYYY-MM-DD' })
+    .withMessage('must be a valid date and be formatted with YYYY-MM-DD format'),
   body('minCount').not().isEmpty().withMessage('minCount is required'),
   body('maxCount').not().isEmpty().withMessage('maxCount is required'),
  

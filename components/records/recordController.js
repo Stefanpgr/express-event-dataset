@@ -29,8 +29,6 @@ const getRecords = async (req, res, next) => {
         },
       },
       { $unset: '_id' },
-      {$sort: { createdAt: -1 }}
-
     ]) 
 
     if(records.length < 1) return ResMsg(res, 404, 1, 'No records found')
