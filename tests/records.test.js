@@ -53,6 +53,15 @@ test('maxCount should be less than or equals to 5000', async () => {
   
 }, 15000) //timeout increase incase the app takes time to start up #TDD
 
+test('should return status error 404 if no records found', async () => {
+   await request.post('/records').send({
+    startDate: '2017-01-26',
+    endDate: '2018-02-02',
+    minCount: 2000,
+    maxCount: 5000,
+  }).expect(404)
+})
+
 test('should return error 422 if empty request is sent with empty object', async () => {
   await request.post('/records').send({}).expect(422)
 })
