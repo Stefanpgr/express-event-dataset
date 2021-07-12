@@ -29,6 +29,7 @@ const getRecords = async (req, res, next) => {
         },
       },
       { $unset: '_id' },
+      {$sort: { createdAt: -1 }}
 
     ])
     return ResMsg(res, 200, 0, 'Success', records)
