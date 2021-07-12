@@ -5,11 +5,15 @@ const {connectMongo, Record} = require('./config/db')
 const recordRoutes = require('./components/records/recordRoutes')
 const ResMsg = require('./utils')
 
+
 config()
 const app = express()
+
 connectMongo()
 
 app.use(express.json())
+
+app.get('/', (req, res) => ResMsg(res, 200, 0, 'Welcome, Getir :)'))
 
 app.use(recordRoutes)
 

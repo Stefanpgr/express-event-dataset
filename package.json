@@ -5,7 +5,8 @@
   "main": "app",
   "scripts": {
     "start": "node app.js",
-    "test": "jest --watchAll"
+    "test": " node app.js && jest --watchAll",
+    "dev": "nodemon"
   },
   "author": "Daniel Agoziem",
   "license": "MIT",

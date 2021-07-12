@@ -1,7 +1,16 @@
 const { Record }  = require('../../config/db')
 const ResMsg = require('../../utils')
 
+/**
+ * Represents a book.
+ * @function
+ * @param {object} req - request object for payload and headers.
+ * @param {res} res - response object sent to the client.
+ */
+
+
 const getRecords = async (req, res, next) => {
+  const { minCount, maxCount, startDate, endDate } = req.body
   try {
     const records = await Record.aggregate([
 
@@ -15,8 +24,8 @@ const getRecords = async (req, res, next) => {
       },
       {
         $match: {
-          totalCount: { $lte: req.body.maxCount, $gte: req.body.minCount },
-          createdAt: { $gte: new Date(req.body.startDate), $lte: new Date(req.body.endDate) },
+          totalCount: { $lte: maxCount, $gte: minCount },
+          createdAt: { $gte: new Date(startDate), $lte: new Date(endDate) },
         },
       },
       { $unset: '_id' },
