@@ -1,6 +1,6 @@
 # event-dataset
 
-Solution to Getir technical Assignment.
+Create and update events.
 ## Installation
 
 ```bash
